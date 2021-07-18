@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Repository\Exception\ConnectionException;
+use App\Repository\Exception\ResultNotFoundException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,6 +19,8 @@ class HandlerFinder
 
     /**
      * @return ?T
+     * @throws ConnectionException
+     * @throws ResultNotFoundException
      */
     public function findAndCallInMemoryHandler(CommandInterface $command): ?object
     {
@@ -35,6 +39,8 @@ class HandlerFinder
 
     /**
      * @return ?T
+     * @throws ConnectionException
+     * @throws ResultNotFoundException
      */
     public function findAndCallDoctrineHandler(CommandInterface $command): ?object
     {

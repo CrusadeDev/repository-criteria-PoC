@@ -19,7 +19,7 @@ class UserRepositoryDoctrine implements UserRepositoryInterface
     }
 
     /**
-     * @throws \Exception
+     * @inheritDoc
      */
     public function find(CommandInterface $command): ?User
     {

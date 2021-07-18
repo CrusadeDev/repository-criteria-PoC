@@ -6,6 +6,9 @@ namespace App\Repository;
 
 class HandlerAttributeReader
 {
+    /**
+     * @return class-string
+     */
     public function readAttribute(string $className, string $type): string
     {
         try {
