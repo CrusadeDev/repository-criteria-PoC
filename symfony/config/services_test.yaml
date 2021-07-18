@@ -1,0 +1,23 @@
+parameters:
+
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    public: true
+
+  App\:
+    resource: '../src/'
+    exclude:
+      - '../src/DependencyInjection/'
+      - '../src/Kernel.php'
+      - '../src/Tests/'
+      - '../src/User/Repository/FindUser/FindUserCommand.php'
+      - '../src/User/Repository/Save/SaveCommand.php'
+      - '../src/User/User.php'
+      - '../src/Repository/CommandHandler.php'
+  App\User\Repository\UserRepositoryInterface: '@App\User\Repository\UserRepositoryInMemory'
+
+  # add more service definitions when explicit configuration is needed
+  # please note that last definitions always *replace* previous ones

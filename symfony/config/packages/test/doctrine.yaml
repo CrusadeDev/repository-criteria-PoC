@@ -1,0 +1,11 @@
+framework:
+  cache:
+    pools:
+      doctrine.system_cache_pool:
+        adapter: cache.system
+
+doctrine:
+  orm:
+    query_cache_driver:
+      type: pool
+      pool: doctrine.system_cache_pool
