@@ -11,7 +11,7 @@ use App\User\Repository\FindUser\InMemory\FindUserCommandHandler;
 
 #[CommandHandler(ImplementationTypes::IN_MEMORY, FindUserCommandHandler::class)]
 #[CommandHandler(ImplementationTypes::DOCTRINE, Doctrine\FindUserCommandHandler::class)]
-class FindUserCommand implements CommandInterface
+final class FindUserCommand implements CommandInterface
 {
     public function __construct(private int $id)
     {

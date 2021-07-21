@@ -6,6 +6,7 @@ namespace App\User\Repository;
 
 use App\Repository\CommandInterface;
 use App\Repository\HandlerFinder;
+use App\User\Repository\Save\SaveCommand;
 use App\User\User;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -28,8 +29,7 @@ class UserRepositoryDoctrine implements UserRepositoryInterface
 
     public function save(User $user): void
     {
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+        $this->handlerFinder->findAndCallDoctrineHandler(new SaveCommand($user));
     }
 
     public function transactional(\Closure $closure): void

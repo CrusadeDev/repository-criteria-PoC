@@ -12,7 +12,7 @@ use App\User\User;
 
 #[CommandHandler(ImplementationTypes::IN_MEMORY, SaveCommandHandler::class)]
 #[CommandHandler(ImplementationTypes::DOCTRINE, Doctrine\SaveCommandHandler::class)]
-class SaveCommand implements CommandInterface
+final class SaveCommand implements CommandInterface
 {
     public function __construct(private User $user)
     {

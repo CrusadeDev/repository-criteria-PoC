@@ -6,7 +6,7 @@ namespace App\User\Repository;
 
 use App\User\User;
 
-class UserDao
+class UserStore
 {
     /**
      * @property array<int, User>
