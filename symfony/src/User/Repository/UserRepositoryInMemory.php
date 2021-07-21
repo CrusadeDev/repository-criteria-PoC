@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Repository;
 
-use App\Repository\CommandInterface;
+use App\Repository\CriteriaInterface;
 use App\Repository\HandlerFinder;
 use App\User\Repository\Save\SaveCommand;
 use App\User\User;
@@ -21,7 +21,7 @@ class UserRepositoryInMemory implements UserRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function find(CommandInterface $command): ?User
+    public function find(CriteriaInterface $command): ?User
     {
         return $this->handlerFinder->findAndCallInMemoryHandler($command);
     }

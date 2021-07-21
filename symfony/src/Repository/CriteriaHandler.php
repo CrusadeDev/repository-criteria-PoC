@@ -9,7 +9,7 @@ namespace App\Repository;
 use Attribute;
 
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_CLASS)]
-class CommandHandler
+class CriteriaHandler
 {
     public function __construct(private string $type, private string $handler)
     {

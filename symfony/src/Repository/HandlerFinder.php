@@ -22,8 +22,9 @@ class HandlerFinder
      * @throws ConnectionException
      * @throws ResultNotFoundException
      */
-    public function findAndCallInMemoryHandler(CommandInterface $command): ?object
+    public function findAndCallInMemoryHandler(CriteriaInterface $command): ?object
     {
+
         $class = $command::class;
 
         $handlerClass = $this->attributeReader->readAttribute($class, ImplementationTypes::IN_MEMORY);
@@ -42,7 +43,7 @@ class HandlerFinder
      * @throws ConnectionException
      * @throws ResultNotFoundException
      */
-    public function findAndCallDoctrineHandler(CommandInterface $command): ?object
+    public function findAndCallDoctrineHandler(CriteriaInterface $command): ?object
     {
         $class = $command::class;
 

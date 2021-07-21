@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\User\Repository\FindUser;
 
-use App\Repository\CommandHandler;
-use App\Repository\CommandInterface;
+use App\Repository\CriteriaHandler;
+use App\Repository\CriteriaInterface;
 use App\Repository\ImplementationTypes;
 use App\User\Repository\FindUser\InMemory\FindUserCommandHandler;
 
-#[CommandHandler(ImplementationTypes::IN_MEMORY, FindUserCommandHandler::class)]
-#[CommandHandler(ImplementationTypes::DOCTRINE, Doctrine\FindUserCommandHandler::class)]
-final class FindUserCommand implements CommandInterface
+#[CriteriaHandler(ImplementationTypes::IN_MEMORY, FindUserCommandHandler::class)]
+#[CriteriaHandler(ImplementationTypes::DOCTRINE, Doctrine\FindUserCommandHandler::class)]
+final class FindUserCriteria implements CriteriaInterface
 {
     public function __construct(private int $id)
     {

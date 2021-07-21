@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\UseCases\AddUser;
+namespace App\User\UseCases\AddSysAdminUserUsingAdminPanel;
 
-use App\User\Repository\FindUser\FindUserCommand;
+use App\User\Repository\FindUser\FindUserCriteria;
 use App\User\Repository\UserRepositoryInterface;
 use App\User\User;
 
@@ -16,7 +16,7 @@ class AddUserService
 
     public function handle(int $id): void
     {
-        $userExists = $this->repository->find(new FindUserCommand($id));
+        $userExists = $this->repository->find(new FindUserCriteria($id));
 
         if ($userExists !== null) {
             throw new \Error('User already exists');

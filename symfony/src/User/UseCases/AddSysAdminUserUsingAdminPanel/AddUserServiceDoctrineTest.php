@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\UseCases\AddUser;
+namespace App\User\UseCases\AddSysAdminUserUsingAdminPanel;
 
-use App\User\Repository\FindUser\FindUserCommand;
+use App\User\Repository\FindUser\FindUserCriteria;
 use App\User\Repository\UserRepositoryDoctrine;
 use App\User\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -34,7 +34,7 @@ class AddUserServiceDoctrineTest extends KernelTestCase
         $service = new AddUserService($repo);
         $service->handle($id);
 
-        $result = $repo->find(new FindUserCommand($id));
+        $result = $repo->find(new FindUserCriteria($id));
 
         self::assertNotNull($result);
     }

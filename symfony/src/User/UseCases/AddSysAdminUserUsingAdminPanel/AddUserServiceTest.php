@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\UseCases\AddUser;
+namespace App\User\UseCases\AddSysAdminUserUsingAdminPanel;
 
-use App\User\Repository\FindUser\FindUserCommand;
+use App\User\Repository\FindUser\FindUserCriteria;
 use App\User\Repository\UserRepositoryInterface;
 use App\User\User;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -24,7 +24,7 @@ class AddUserServiceTest extends KernelTestCase
         $id = 1;
         self::getContainer()->get(AddUserService::class)->handle($id);
 
-        $result = self::getContainer()->get(UserRepositoryInterface::class)->find(new FindUserCommand($id));
+        $result = self::getContainer()->get(UserRepositoryInterface::class)->find(new FindUserCriteria($id));
 
         self::assertNotNull($result);
     }

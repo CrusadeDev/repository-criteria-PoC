@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\User\Repository\Save\Doctrine;
 
+use App\Repository\Exception\ConnectionException;
 use App\User\Repository\Save\SaveCommand;
 use Doctrine\ORM\EntityManagerInterface;
 
-class SaveCommandHandler
+class SaveHandler
 {
     private EntityManagerInterface $entityManager;
 
@@ -18,6 +19,10 @@ class SaveCommandHandler
 
     public function handle(SaveCommand $command): void
     {
-        $this->entityManager->persist($command->getUser());
+        try {
+            $this->entityManager->persist($command->getUser());
+        } catch (\Exception $exception) {
+            throw new ConnectionException($exception->getMessage());
+        }
     }
 }

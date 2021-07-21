@@ -17,10 +17,10 @@ class HandlerAttributeReader
             throw new \LogicException($e->getMessage());
         }
 
-        $attr = $ref->getAttributes(CommandHandler::class);
+        $attr = $ref->getAttributes(CriteriaHandler::class);
 
         foreach ($attr as $attribute) {
-            /** @var CommandHandler $instance */
+            /** @var CriteriaHandler $instance */
             $instance = $attribute->newInstance();
             if ($instance->getType() === $type) {
                 return $instance->getHandler();

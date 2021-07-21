@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Repository\FindUser\InMemory;
 
-use App\User\Repository\FindUser\FindUserCommand;
+use App\User\Repository\FindUser\FindUserCriteria;
 use App\User\Repository\UserStore;
 use App\User\User;
 
@@ -14,7 +14,7 @@ class FindUserCommandHandler
     {
     }
 
-    public function handle(FindUserCommand $command): ?User
+    public function handle(FindUserCriteria $command): ?User
     {
         $users = $this->repository->getUsers();
 

@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class SaveCommandHandlerTest extends KernelTestCase
 {
-    private SaveCommandHandler $handler;
+    private SaveHandler $handler;
     private EntityManagerInterface $em;
 
     public function test_handle_ShouldSaveUserToDatabase(): void
@@ -29,7 +29,7 @@ class SaveCommandHandlerTest extends KernelTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->handler = self::getContainer()->get(SaveCommandHandler::class);
+        $this->handler = self::getContainer()->get(SaveHandler::class);
         $this->em = self::getContainer()->get(EntityManagerInterface::class);
         $this->em->beginTransaction();
     }

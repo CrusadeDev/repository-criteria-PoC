@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Repository\FindUser\Doctrine;
 
-use App\User\Repository\FindUser\FindUserCommand;
+use App\User\Repository\FindUser\FindUserCriteria;
 use App\User\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
@@ -16,7 +16,7 @@ class FindUserCommandHandler
     {
     }
 
-    public function handle(FindUserCommand $command): ?User
+    public function handle(FindUserCriteria $command): ?User
     {
         $qb = $this->entityManager->createQueryBuilder();
         $qb->select('user');
